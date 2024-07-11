@@ -15,11 +15,15 @@ yt-dlp = "^2024.7.9"
 pydub = "^0.25.1"
 youtube-transcript-api = "^0.6.2"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
 [tool.poetry.scripts]
 youtubed = "youtubed.main:youtubed"
+
+[tool.black]
+line-length = 88
+
+[tool.flake8]
+max-line-length = 88
