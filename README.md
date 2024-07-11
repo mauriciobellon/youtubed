@@ -13,6 +13,7 @@ A simple YouTube video and playlist downloader.
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
+- [Contact](#contact)
 
 ## Features
 
@@ -76,7 +77,7 @@ Contributions are welcome! Please read our Contributing Guidelines for details o
 - Open a pull request.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/mauriciobellon/youtubed/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/mauriciobellon/youtubed/blob/master/LICENSE.md) file for details.
 
 ## Contact
 

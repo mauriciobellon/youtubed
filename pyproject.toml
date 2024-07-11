@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A simple youtube downloader"
 authors = ["Mauricio Bellon <mauriciobellon@gmail.com>"]
 license = "MIT"
-readme = "readme.md"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
