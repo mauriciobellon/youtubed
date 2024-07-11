@@ -22,4 +22,4 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-youtubed = "youtubed.cli:youtubed"
+youtubed = "youtubed.cli:cli"
