@@ -16,11 +16,13 @@ class Downloader:
         }
 
     def download_video(self, url, playlist_title=None):
+        # Define o caminho de salvamento do arquivo, incluindo o nome da playlist, se disponível
         self.ydl_opts['outtmpl'] = os.path.join(self.output_path, '%(uploader)s', '%(playlist_title)s', '%(title)s', '%(title)s.%(ext)s') if playlist_title else os.path.join(self.output_path, '%(uploader)s', '%(title)s', '%(title)s.%(ext)s')
         with YoutubeDL(self.ydl_opts) as ydl:
             info_dict = ydl.extract_info(url, download=True)
             title = info_dict.get('title', None)
             uploader = info_dict.get('uploader', 'UnknownUploader')
+            # Pega o título da playlist, se disponível
             playlist_title = info_dict.get('playlist_title', playlist_title)
             filename = ydl.prepare_filename(info_dict).replace('.webm', '.mp4').replace('.mkv', '.mp4')
         return filename, title, uploader, playlist_title
