@@ -15,6 +15,7 @@ yt-dlp = "^2024.7.9"
 pydub = "^0.25.1"
 youtube-transcript-api = "^0.6.2"
 
+pytest = "^8.2.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
