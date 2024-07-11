@@ -1,5 +1,3 @@
-#### CONTRIBUTING.md
-```markdown
 # Contributing to YouTubed
 
 We welcome contributions to YouTubed! Here are a few guidelines to follow:
