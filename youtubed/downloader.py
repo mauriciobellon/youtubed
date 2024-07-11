@@ -1,5 +1,6 @@
 import os
 from yt_dlp import YoutubeDL
+import requests
 
 class Downloader:
     def __init__(self, output_path, cookie_file='cookies.txt'):
@@ -16,15 +17,16 @@ class Downloader:
         }
 
     def download_video(self, url, playlist_title=None):
-        # Define o caminho de salvamento do arquivo, incluindo o nome da playlist, se disponível
         self.ydl_opts['outtmpl'] = os.path.join(self.output_path, '%(uploader)s', '%(playlist_title)s', '%(title)s', '%(title)s.%(ext)s') if playlist_title else os.path.join(self.output_path, '%(uploader)s', '%(title)s', '%(title)s.%(ext)s')
         with YoutubeDL(self.ydl_opts) as ydl:
             info_dict = ydl.extract_info(url, download=True)
             title = info_dict.get('title', None)
             uploader = info_dict.get('uploader', 'UnknownUploader')
-            # Pega o título da playlist, se disponível
             playlist_title = info_dict.get('playlist_title', playlist_title)
             filename = ydl.prepare_filename(info_dict).replace('.webm', '.mp4').replace('.mkv', '.mp4')
+            thumbnail_url = info_dict.get('thumbnail', None)
+            if thumbnail_url:
+                self.download_thumbnail(thumbnail_url, os.path.dirname(filename), title)
         return filename, title, uploader, playlist_title
 
     def download_playlist(self, url):
@@ -34,3 +36,15 @@ class Downloader:
             playlist_title = playlist_dict.get('title', 'UnknownPlaylist')
             video_urls = [f"https://www.youtube.com/watch?v={entry['id']}" for entry in playlist_dict['entries']]
         return video_urls, playlist_title
+
+    def download_thumbnail(self, thumbnail_url, save_path, title):
+        response = requests.get(thumbnail_url, stream=True)
+        if response.status_code == 200:
+            thumbnail_path = os.path.join(save_path, f"{title}.jpg")
+            with open(thumbnail_path, 'wb') as file:
+                for chunk in response.iter_content(1024):
+                    file.write(chunk)
+            print(f"Thumbnail salva em: {thumbnail_path}")
+        else:
+            print("Erro ao baixar a thumbnail.")
+

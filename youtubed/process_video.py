@@ -8,8 +8,7 @@ def process_video(url, output_base_path, playlist_title=None):
     try:
         downloader = Downloader(output_base_path)
         video_file, title, uploader, playlist_title = downloader.download_video(url, playlist_title)
-        print(f"Vídeo MP4 baixado e salvo em: {video_file}")
-
+        print(f"Vídeo MP4 baixado e salvo em: {video_file}") 
         AudioExtractor.extract_audio(video_file)
         video_folder = os.path.dirname(video_file)
         srt_file = os.path.join(video_folder, title + '.srt')
