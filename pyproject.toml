@@ -16,6 +16,9 @@ pydub = "^0.25.1"
 youtube-transcript-api = "^0.6.2"
 
 pytest = "^8.2.2"
+python-dotenv = "^1.0.1"
+aiohttp = "^3.9.5"
+tenacity = "^8.5.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
